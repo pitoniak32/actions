@@ -1,8 +1,15 @@
 name: Rust CI
 on:
-  workflow_call: {}
+  workflow_call:
+    inputs:
+      cargo-color:
+        description: 'should cargo use colors? (always, never, auto) https://doc.rust-lang.org/cargo/reference/config.html#termcolor'
+        default: always
+        type: string
 jobs:
   build_and_test:
+    env:
+      CARGO_TERM_COLOR: ${{ inputs.cargo-color}}
     runs-on: ubuntu-latest
     strategy:
       matrix:

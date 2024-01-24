@@ -6,8 +6,14 @@ on:
         description: 'name of the artifact that is released'
         required: true
         type: string
+      cargo-color:
+        description: 'should cargo use colors? (always, never, auto) https://doc.rust-lang.org/cargo/reference/config.html#termcolor'
+        default: always
+        type: string
 jobs:
   build-linux:
+    env:
+      CARGO_TERM_COLOR: always
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,6 +36,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-mac:
+    env:
+      CARGO_TERM_COLOR: always
     runs-on: macos-latest
     steps:
       - name: Checkout
