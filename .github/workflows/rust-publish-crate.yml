@@ -5,13 +5,13 @@ on:
       package-name:
         required: true
         type: string
+      cargo-color:
+        description: 'should cargo use colors? (always, never, auto) https://doc.rust-lang.org/cargo/reference/config.html#termcolor'
+        default: always
+        type: string
     secrets:
       CARGO_REGISTRY_TOKEN:
         required: true
-    cargo-color:
-      description: 'should cargo use colors? (always, never, auto) https://doc.rust-lang.org/cargo/reference/config.html#termcolor'
-      default: always
-      type: string
 jobs:
   publish-crate:
     env:
