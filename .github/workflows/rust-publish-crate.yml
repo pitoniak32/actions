@@ -16,6 +16,7 @@ jobs:
   publish-crate:
     env:
       CARGO_TERM_COLOR: ${{ inputs.cargo-color}}
+      CARGO_PUBLISH_CI: 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
